@@ -1,0 +1,35 @@
+openapi: 3.0.1
+info:
+  title: api-rmcapitale-variazioni-anagrafiche
+  description: API Definition of api-rmcapitale-variazioni-anagrafiche
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/variazioni-anagrafiche
+paths:
+  /resendCF:
+    post:
+      requestBody:
+        description: Lista codici fiscali
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CF'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+components:
+  schemas:
+    CF:
+      type: object
+      properties:
+        codiceFiscale:
+          type: string
+        nome:
+          type: string
+        cognome:
+          type: string
